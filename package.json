@@ -1,6 +1,6 @@
 {
   "name": "creditstxt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "create a credits.txt file for your npm-based project",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "repository": "kemitchell/creditstxt.js",
