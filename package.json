@@ -1,0 +1,15 @@
+{
+  "name": "creditstxt",
+  "version": "0.0.0",
+  "description": "create a credits.txt file for your npm-based project",
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
+  "repository": "kemitchell/creditstxt.js",
+  "license": "BlueOak-1.0.0",
+  "bin": "bin",
+  "dependencies": {
+    "npm-authors-contributors": "^1.1.0"
+  },
+  "devDependencies": {
+    "yargs": "^13.2.2"
+  }
+}

@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+var npmAuthorsContributors = require('npm-authors-contributors')
+var yargs = require('yargs')
+
+var argv = yargs
+  .scriptName('creditstxt')
+  .usage('Usage: $0 [options]')
+  .alias('h', 'help')
+  .alias('v', 'version')
+  .describe('production', 'Do not output contributors to devDependencies')
+  .boolean('production')
+  .example('npx creditstxt > static/credits.txt')
+  .argv
+
+var options = {productionOnly: argv.production}
+npmAuthorsContributors(options, process.cwd(), function (error, people) {
+  if (error) {
+    console.error(error)
+    process.exit(1)
+  }
+
+  // Compile an Object map from contributor or author name to an Array
+  // of package names to which they contributed.
+  var packagesByName = {}
+  people.forEach(function (person) {
+    var name = person.name
+    if (!name) return
+    if (packagesByName.hasOwnProperty(name)) {
+      person.packages.forEach(function (packageName) {
+        var packages = packagesByName[name]
+        if (packages.indexOf(packageName) === -1) {
+          packages.push(packageName)
+        }
+      })
+    } else {
+      packagesByName[name] = person.packages
+    }
+  })
+
+  // Output one line per contributor, listing their packages.
+  Object.keys(packagesByName)
+    .sort()
+    .forEach(function (name) {
+      console.log(
+        name + ': ' + packagesByName[name].sort().join(', ')
+      )
+    })
+})
