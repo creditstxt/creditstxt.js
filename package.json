@@ -7,11 +7,11 @@
   "license": "BlueOak-1.0.0",
   "bin": "bin",
   "dependencies": {
-    "npm-authors-contributors": "^1.1.0"
+    "npm-authors-contributors": "^1.1.0",
+    "yargs": "^13.2.2"
   },
   "devDependencies": {
-    "standard": "^12.0.1",
-    "yargs": "^13.2.2"
+    "standard": "^12.0.1"
   },
   "scripts": {
     "lint": "standard"
